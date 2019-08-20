@@ -1,0 +1,46 @@
+﻿<div>
+    <a routerLink="/addvacation" class="btn btn-sm btn-primary">Добавить отпуск</a>
+</div>
+<h3>Данные об отпусках сотрудников</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>ФИО сотрудника</th>
+            <th>Должность</th>
+            <th>Дата начала отпуска</th>
+            <th>Дата окончания отпуска</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let v of vacations">
+            <td>{{v?.id}}</td>
+            <td>{{getEmployeeName(v)}}</td>
+            <td>{{getEmployeePost(v)}}</td>
+            <td>{{v?.startDate | date: 'dd.MM.yyyy'}}</td>
+            <td>{{v?.endDate | date: 'dd.MM.yyyy'}}</td>
+            <td>
+                <a [routerLink]="['editvacation', v.id]" class="btn btn-sm btn-warning ">Редактировать</a>
+                <button (click)="delete(v.id)" class="btn btn-sm btn-danger">Удалить</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3>График ближайших отпусков</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>ФИО сотрудника</th>
+            <th>Диапазон дат</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let nv of nextVacations">
+            <td>{{nv?.id}}</td>
+            <td>{{getEmployeeName(nv)}}</td>
+            <td>{{nv?.startDate | date: 'dd.MM.yyyy'}} - {{nv?.endDate | date: 'dd.MM.yyyy'}}</td>
+        </tr>
+    </tbody>
+</table>

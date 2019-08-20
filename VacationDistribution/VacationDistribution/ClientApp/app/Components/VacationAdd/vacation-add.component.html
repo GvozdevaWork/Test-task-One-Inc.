@@ -1,0 +1,9 @@
+﻿<div>
+    <h2>Добавление отпуска</h2>
+    <vacation-form [(vacation)]="vacation"></vacation-form>
+    <div class="form-group">
+        <input type="button" value="Сохранить" (click)="save()" class="btn btn-success" />
+        <a routerLink="/vacationlist" class="btn btn-warning">Отмена</a>
+    </div>
+    <span class="error text-danger">{{error}}</span>
+</div>

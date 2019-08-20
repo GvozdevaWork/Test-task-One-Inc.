@@ -1,0 +1,24 @@
+﻿<div>
+    <a routerLink="/createemployee" class="btn btn-sm btn-primary">Добавить сотрудника</a>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>ФИО</th>
+            <th>Должность</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let emp of employees">
+            <td>{{emp.id}}</td>
+            <td>{{emp.lastName}} {{emp.firstName}} {{emp.middleName}}</td>
+            <td>{{getPostName(emp.post)}}</td>
+            <td>
+                <a [routerLink]="['editemployee', emp.id]" class="btn btn-sm btn-warning ">Редактировать</a>
+                <button (click)="delete(emp.id)" class="btn btn-sm btn-danger">Удалить</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,16 @@
+﻿<div class="form-group">
+    <div>
+        <label>Сотрудник</label>
+        <select [(ngModel)]="vacation.employeeId" class="form-control">
+            <option *ngFor="let emp of employees" [value]="emp.id">{{emp.lastName}} {{emp.firstName}} {{emp.middleName}}</option>
+        </select>
+    </div>
+    <div>
+        <label>Дата начала отпуска</label>
+        <input type="date" [ngModel]="vacation.startDate | date:'yyyy-MM-dd'" (ngModelChange)="vacation.startDate = $event" class="form-control"/>
+    </div>
+    <div>
+        <label>Дата окончания отпуска</label>
+        <input type="date" [ngModel]="vacation.endDate | date:'yyyy-MM-dd'" (ngModelChange)="vacation.endDate = $event" class="form-control"/>
+    </div>
+</div>
